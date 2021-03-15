@@ -1,16 +1,20 @@
 Rails.application.routes.draw do
+  devise_for :admins
   namespace :admin do 
-  devise_for :admins, path: '', controllers: {
-      sessions: 'admin/admins/sessions'
-  }
   end
   
-  scope module: :public do
-  devise_for :customers, controllers: {
-      sessions: 'public/customers/sessions',
-      registrations: 'public/customers/registrations',
-      passwords: 'public/customers/passwords'
-    }
+  devise_for :customers, :controllers => {
+ :sessions => 'public/customerssessions',
+ :passwords => 'public/customers/passwords',
+ :registrations => 'public/customers/registrations',
+ :application => 'public/application'
+  }
+
+  namespace :public, path: "" do
+    root to: "homes#top"
+    get "/about" => "homes#about"
+    resources :customers, only: [:show, :edit]
+    resources :items, only: [:index, :show]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
