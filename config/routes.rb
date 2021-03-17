@@ -1,17 +1,23 @@
 Rails.application.routes.draw do
+ 
   
-  namespace :admin do
-    get 'homes/top'
-  end
-  devise_for :admins
+  devise_for :admins, :controllers => {
+    :sessions => 'admin/admins/sessions',
+    :passwords => 'admin/admins/passwords',
+  }
+  
   namespace :admin do 
+    resources :homes, only: [:top]
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update]
+    resources :orders, only: [:show, :update]
   end
   
   devise_for :customers, :controllers => {
- :sessions => 'public/customerssessions',
- :passwords => 'public/customers/passwords',
- :registrations => 'public/customers/registrations',
- :application => 'public/application'
+    :sessions => 'public/customers/sessions',
+    :passwords => 'public/customers/passwords',
+    :registrations => 'public/customers/registrations',
+    :application => 'public/application'
   }
 
   namespace :public, path: "" do
