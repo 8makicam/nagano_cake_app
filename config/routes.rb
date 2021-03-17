@@ -1,23 +1,7 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'deliveries/index'
-    get 'deliveries/edit'
-  end
-  namespace :public do
-    get 'orders/index'
-    get 'orders/new'
-    get 'orders/show'
-  end
-  get 'public/orders'
-  get 'public/new'
-  get 'public/index'
-  get 'public/show'
-  namespace :public do
-    get 'cart_items/index'
-    get 'cart_items/update'
-    get 'cart_items/destroy_item'
-    get 'cart_items/destroy_all'
-    get 'cart_items/create'
+  
+  namespace :admin do
+    get 'homes/top'
   end
   devise_for :admins
   namespace :admin do 
@@ -33,9 +17,13 @@ Rails.application.routes.draw do
   namespace :public, path: "" do
     root to: "homes#top"
     get "/about" => "homes#about"
-    resources :customers, only: [:show, :edit]
-    resources :items, only: [:index, :show]
+    resources :customers, only: [:show, :edit, :update, :destroy, :update]
+    resources :items, only: [:index, :show,]
+    resources :cart_items, only: [:index, :update, :destroy_item, :destroy_all, :create]
+    resources :orders, only: [:new, :confirm, :thanks, :conplete, :index, :show]
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
 
