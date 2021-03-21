@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
  
-  
-  devise_for :admins, :controllers => {
+  devise_for :admins, path: "/admin", :controllers => {
     :sessions => 'admin/admins/sessions',
     :passwords => 'admin/admins/passwords',
   }
   
   namespace :admin do 
-    resources :homes, only: [:top]
+    get "/" => "homes#top"
+    resources :customers, only: [:index, :show, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :orders, only: [:show, :update]
