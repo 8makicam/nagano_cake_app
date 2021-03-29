@@ -1,2 +1,29 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<!-- ヘッダーの部分テンプレート -->
+<%= render partial: 'admin/header_admin' %>
+
+<!-- BODY部分 -->
+<div class='container' >
+    <div class='row' >
+        <h1>商品詳細</h1>
+    </div>
+    <div class='row' >
+        <div class='col-5 mx-auto' >
+            <div class='d-flex align-items-center justify-content-center'>
+                <%= attachment_image_tag @item, :image, :fill, 400, 400 %>
+            </div>
+            
+        </div>
+        <div class='col-7 '>
+            <div class='d-flex flex-column bd-highlight mb-3'>
+                <div class="p-2 bd-highlight"><%= @item.name %></div>
+                <div class="p-2 bd-highlight"><%= @item.introduction %></div>
+                <div class="p-2 bd-highlight"><%= @item.genre_id %></div>
+                <div class="p-2 bd-highlight"><%= @item.price %></div>
+                <div class="p-2 bd-highlight"><%= @item.is_active%></div>
+                <%= link_to "Edit", edit_admin_item_path(@item.id) %>
+            </div>
+　　　　</div>
+    </div>
+</div>
+
+
