@@ -17,13 +17,8 @@
           <th> ステータス </th>
         </tr>
       </thead>
-
-      <tbody>
-        <% @items.each do |item_info| %>
-          <tr>
-            <td>
-              <%= item_info.id %>
-            </td>
+      <body>
+        <% @items.each do |f| %>
             <td>
               <%= item_info.name %>
             </td>
