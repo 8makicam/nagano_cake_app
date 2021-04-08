@@ -1,25 +1,32 @@
-<div class='conrainer'>
-  <div row='row'>
+  <!-- ヘッダーの部分テンプレート -->
+<%= render partial: 'admin/header_admin' %>
+
+
+<div class='container'>
+  <div class='row'>
     <h1>ジャンル管理画面</h1>
   </div>
+  
   <div class='row'>
     <%= form_with model: @genre, url:admin_genres_path, local:true do |f| %>
-    <h4>ジャンル名</h4>
     <%= f.text_field :name %>
-    <%= f.submit "新規登録", :class => 'btn btn-success ' %>
+    <%= f.submit '新規登録' %>
+    <% end %>
   </div>
-  <div class='row'>
-    <table class='table'>
-      <thead>
-        <th>ジャンル</th>
-        <th></th>
-      </thead>
-      <tbody>
-        <% @items.each do |genre_info| %>
-        <td><%= genre_info.name %></td>
-        <td><%= link_to "編集", admin_genres_path(genre.id), method: :get, class: "btn btn-success btn-sm btn-block sign_up" %></td>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+  
+  <table class='table'>
+    <thead>
+      <th>ジャンル名</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @genres.each do |genre_info| %>
+      <td><%= genre_info.name %></td>
+      <td><%= link_to "Edit", edit_admin_genre_path(genre.id) %></td>
+      <% end %>
+    </tbody>
+  </table>
+    
 </div>
+  
+

@@ -31,7 +31,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     item = @item
     if item.update(item_params)
-      flash[:notice] = "Profile was successfully updated."
+      flash[:notice] = "Item was successfully updated."
     redirect_to admin_item_path(item.id)
     else
       render :edit
@@ -40,9 +40,10 @@ class Admin::ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:genre).permit(:name, :introduction, :price, :genre_id, :is_active, :image)
+    params.require(:item).permit(:name, :introduction, :price, :genre_id, :is_active, :image)
   end
 
 end
+
 
 
