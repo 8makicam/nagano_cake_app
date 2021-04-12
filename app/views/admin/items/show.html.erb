@@ -17,9 +17,9 @@
             <div class='d-flex flex-column bd-highlight mb-3'>
                 <div class="p-2 bd-highlight"><%= @item.name %></div>
                 <div class="p-2 bd-highlight"><%= @item.introduction %></div>
-                <div class="p-2 bd-highlight"><%= @item.genre_id %></div>
+                <div class="p-2 bd-highlight"><%= @item.genre.name %></div>
                 <div class="p-2 bd-highlight"><%= @item.price %></div>
-                <div class="p-2 bd-highlight"><%= @item.is_active%></div>
+                <div class="p-2 bd-highlight"><%= @item.is_active %></div>
                 <%= link_to "Edit", edit_admin_item_path(@item.id) %>
             </div>
 　　　　</div>

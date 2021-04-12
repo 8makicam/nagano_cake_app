@@ -25,7 +25,7 @@ class Admin::GenresController < ApplicationController
     genre = @genre
     if genre.update(genre_params)
       flash[:notice] = "Genre was successfully updated."
-    redirect_to :index
+    redirect_to admin_genres_path
     else
     render :edit
     end

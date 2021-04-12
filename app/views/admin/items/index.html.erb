@@ -18,18 +18,21 @@
         </tr>
       </thead>
       <body>
-        <% @items.each do |item_info| %>
+        <% @items.each do |item| %>
             <td>
-              <%= item_info.name %>
+              <%= item.id %>
             </td>
             <td>
-              <%= item_info.price %>
+              <%= item.name %>
             </td>
             <td>
-              <%= item_info.genre_id %>
+              <%= item.price %>
             </td>
             <td>
-              <%= item_info.is_active %>
+              <%= item.genres %>
+            </td>
+            <td>
+              <%= item.is_active %>
             </td>
           </tr>
         <% end %>
