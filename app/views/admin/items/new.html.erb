@@ -32,7 +32,7 @@
       <%= f.text_field :price %><p>円</p>
 
       <h4>販売ステータス</h4>
-      <%= f.select :is_active, [["販売中",0],["販売停止中",1]], { include_blank: true, selected: 0 } %>
+      <%= f.select :is_active, [["販売中",true],["販売停止中",false]], { include_blank: true, selected: 0 } %>
 
       <%= f.submit '新規登録' %>
     <% end %>
