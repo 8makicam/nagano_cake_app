@@ -1,2 +1,38 @@
 <!-- ヘッダーの部分テンプレート -->
 <%= render partial: 'admin/header_admin' %>
+
+<div class='container'>
+  <div class='row'>
+    <h1 class=''>顧客一覧</h1>
+  </div>
+
+  <div class='row'>
+    <table class="table">
+      <thead>
+        <tr>
+          <th> 会員ID </th>
+          <th> 氏名 </th>
+          <th> メールアドレス </th>
+          <th> ステータス </th>
+        </tr>
+      </thead>
+      <body>
+        <% @customers.each do |customer| %>
+            <td>
+              <%= customer.id %>
+            </td>
+            <td>
+              <%= link_to customer.first_name, admin_customer_path(customer.id) %>
+            </td>
+            <td>
+              <%= customer.email %>
+            </td>
+            <td>
+              <%= customer.is_active ? "有効" : "無効" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
